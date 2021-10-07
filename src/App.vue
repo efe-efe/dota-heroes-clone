@@ -103,10 +103,10 @@ p {
 
 .hero-grid {
   display: grid;
-  justify-items: center;
   max-width: 1200px;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  grid-template-columns: repeat(auto-fit, 225px);
+  justify-content: center;
 }
 
 .p-grid {

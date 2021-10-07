@@ -8,7 +8,7 @@
       <div class="hero-searchbar">
       </div>
       <div class="hero-grid">
-        <HeroCard v-for="(hero, index) in heroes" v-bind:key="index" :hero-name="hero.name"/>
+        <HeroCard v-for="(hero, index) in heroes" v-bind:key="index" :hero-name="hero.name" :hero-attribute="hero.attribute"/>
       </div>
     </div>
     <div class="heroes__footer">
@@ -22,47 +22,47 @@ import HeroCard from './components/HeroCard';
 export default {
   name: 'App',
   components: [
-    HeroCard
+    HeroCard,
   ],
   data: function() {
     return {
       heroes: [
-        {name: 'weaver'},
-        {name: 'clinkz'},
-        {name: 'antimage'},
-        {name: 'sniper'},
-        {name: 'snapfire'},
-        {name: 'undying'},
-        {name: 'warlock'},
-        {name: 'enchantress'},
-        {name: 'wisp'},
-        {name: 'tiny'},
-        {name: 'invoker'},
-        {name: 'juggernaut'},
-        {name: 'weaver'},
-        {name: 'clinkz'},
-        {name: 'antimage'},
-        {name: 'sniper'},
-        {name: 'snapfire'},
-        {name: 'undying'},
-        {name: 'warlock'},
-        {name: 'enchantress'},
-        {name: 'wisp'},
-        {name: 'tiny'},
-        {name: 'invoker'},
-        {name: 'juggernaut'},
-        {name: 'weaver'},
-        {name: 'clinkz'},
-        {name: 'antimage'},
-        {name: 'sniper'},
-        {name: 'snapfire'},
-        {name: 'undying'},
-        {name: 'warlock'},
-        {name: 'enchantress'},
-        {name: 'wisp'},
-        {name: 'tiny'},
-        {name: 'invoker'},
-        {name: 'juggernaut'},
+        {name: 'weaver', attribute: 'agility'},
+        {name: 'clinkz', attribute: 'strength'},
+        {name: 'antimage', attribute: 'strength'},
+        {name: 'sniper', attribute: 'strength'},
+        {name: 'snapfire', attribute: 'strength'},
+        {name: 'undying', attribute: 'strength'},
+        {name: 'warlock', attribute: 'strength'},
+        {name: 'enchantress', attribute: 'intelligence'},
+        {name: 'wisp', attribute: 'strength'},
+        {name: 'tiny', attribute: 'strength'},
+        {name: 'invoker', attribute: 'strength'},
+        {name: 'juggernaut', attribute: 'strength'},
+        {name: 'weaver', attribute: 'strength'},
+        {name: 'clinkz', attribute: 'strength'},
+        {name: 'antimage', attribute: 'strength'},
+        {name: 'sniper', attribute: 'strength'},
+        {name: 'snapfire', attribute: 'strength'},
+        {name: 'undying', attribute: 'strength'},
+        {name: 'warlock', attribute: 'strength'},
+        {name: 'enchantress', attribute: 'strength'},
+        {name: 'wisp', attribute: 'strength'},
+        {name: 'tiny', attribute: 'strength'},
+        {name: 'invoker', attribute: 'strength'},
+        {name: 'juggernaut', attribute: 'strength'},
+        {name: 'weaver', attribute: 'strength'},
+        {name: 'clinkz', attribute: 'strength'},
+        {name: 'antimage', attribute: 'strength'},
+        {name: 'sniper', attribute: 'strength'},
+        {name: 'snapfire', attribute: 'strength'},
+        {name: 'undying', attribute: 'strength'},
+        {name: 'warlock', attribute: 'strength'},
+        {name: 'enchantress', attribute: 'strength'},
+        {name: 'wisp', attribute: 'strength'},
+        {name: 'tiny', attribute: 'strength'},
+        {name: 'invoker', attribute: 'strength'},
+        {name: 'juggernaut', attribute: 'strength'},
       ],
     }
   }

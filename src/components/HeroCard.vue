@@ -1,5 +1,5 @@
 <template>
-    <div class="hero-card" :style="styleObject">
+    <a class="hero-card" :style="styleObject" href="https://google.cl">
         <div class="hero-card__name">
             <img class="hero-card__name-icon" :src="attributeImageSrc"/>
             <div class="hero-card__name-text">
@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="hero-card__shadow" />
-    </div>
+    </a>
 </template>
 <script>
     export default {
@@ -36,6 +36,7 @@
         
         align-self: normal;
         position: relative;
+        cursor: pointer;
     }
 
     .hero-card__name {
@@ -51,6 +52,11 @@
         display: flex;
         align-items: center;
         z-index: 2;
+    }
+
+    .hero-card__name-text {
+        font-size: 18px;
+        text-transform: uppercase;
     }
 
     .hero-card__shadow {

@@ -69,6 +69,10 @@ export default {
 .heroes {
 }
 
+img {
+  box-sizing: border-box;
+}
+
 h1 {
   margin-top: 100px;
   margin-bottom: 10px;

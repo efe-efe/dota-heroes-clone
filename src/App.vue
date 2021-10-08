@@ -5,8 +5,7 @@
     <div class="heroes__body">
       <h1>ELIGE A TU HÉROE</h1>
       <p>Estrategas de la magia, feroces bestias y villanos astutos... El conjunto de héroes de Dota 2 es enorme y de una diversidad ilimitada. Lanza increíbles hechizos y devastadoras habilidades definitivas en tu camino hacia la victoria.</p>
-      <div class="hero-searchbar">
-      </div>
+      <HeroSearchbar />
       <div class="hero-grid">
         <HeroCard v-for="(hero, index) in heroes" v-bind:key="index" :hero-name="hero.name" :hero-attribute="hero.attribute"/>
       </div>
@@ -18,12 +17,8 @@
 
 <script>
 import './reset.css';
-import HeroCard from './components/HeroCard';
 export default {
   name: 'App',
-  components: [
-    HeroCard,
-  ],
   data: function() {
     return {
       heroes: [
@@ -33,7 +28,7 @@ export default {
         {name: 'sniper', attribute: 'strength'},
         {name: 'snapfire', attribute: 'strength'},
         {name: 'undying', attribute: 'strength'},
-        {name: 'warlock', attribute: 'strength'},
+        {name: 'warlock', attribute: 'intelligence'},
         {name: 'enchantress', attribute: 'intelligence'},
         {name: 'wisp', attribute: 'strength'},
         {name: 'tiny', attribute: 'strength'},
@@ -104,7 +99,8 @@ p {
 .hero-grid {
   display: grid;
   max-width: 1200px;
-  gap: 1rem;
+  gap: 18.75px;
+  margin-top: 15px;
   grid-template-columns: repeat(auto-fit, 225px);
   justify-content: center;
 }

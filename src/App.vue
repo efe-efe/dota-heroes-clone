@@ -30,26 +30,6 @@ const ATTRIBUTE_NAMES = {
   ['int']: 'intelligence',
 }
 
-const HERO_CODE_NAMES = {
-  ['windranger']: 'windrunner',
-  ['magnus']: 'magnataur',
-  ['shadow fiend']: 'nevermore',
-  ['vengeful spirit']: 'vengefulspirit',
-  ['zeus']: 'zuus',
-  ['necrophos']: 'necrolyte',
-  ['queen of pain']: 'queenofpain',
-  ['wraith king']: 'skeleton king',
-  ['clockwerk']: 'rattletrap',
-  ['natures prophet']: 'furion',
-  ['lifestealer']: 'life stealer',
-  ['outworld destroyer']: 'obsidian destroyer',
-  ['centaur warrunner']: 'centaur',
-  ['timbersaw']: 'shredder',
-  ['treant protector']: 'treant',
-  ['io']: 'wisp',
-  ['doom']: 'doom bringer',
-}
-
 export default {
   name: 'App',
   data: function() {
@@ -63,11 +43,10 @@ export default {
       response.json()
       .then((data) => {
         this.heroes = data.map((hero) => {
-          const name = hero.localized_name.toLowerCase().replace('-', '').replace("'", '');
           return {
-            name,
+            name: hero.localized_name,
             attribute: ATTRIBUTE_NAMES[hero.primary_attr],
-            codeName:  (HERO_CODE_NAMES[name]) ? HERO_CODE_NAMES[name] : name,
+            codeName:  hero.name.split('npc_dota_hero_')[1],
           }
         });
       });

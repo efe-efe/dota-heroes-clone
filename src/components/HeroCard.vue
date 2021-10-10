@@ -38,6 +38,9 @@
         align-self: normal;
         position: relative;
         cursor: pointer;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 110%;
     }
 
     .hero-card__name {

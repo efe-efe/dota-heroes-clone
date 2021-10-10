@@ -14,12 +14,13 @@
         props: {
             heroName: String,
             heroAttribute: String,
+            heroCodeName: String,
         },
         data: function() {
             return {
                 attributeImageSrc: `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/icons/hero_${this.heroAttribute}.png`,
                 styleObject: {
-                    backgroundImage: `url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${this.heroName}.png")`,
+                    backgroundImage: `url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${this.heroCodeName.replaceAll(' ', '_')}.png")`,
                 },
             }
         }

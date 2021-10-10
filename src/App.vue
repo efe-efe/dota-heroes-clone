@@ -7,7 +7,13 @@
       <p>Estrategas de la magia, feroces bestias y villanos astutos... El conjunto de héroes de Dota 2 es enorme y de una diversidad ilimitada. Lanza increíbles hechizos y devastadoras habilidades definitivas en tu camino hacia la victoria.</p>
       <HeroSearchbar />
       <div class="hero-grid">
-        <HeroCard v-for="(hero, index) in heroes" v-bind:key="index" :hero-name="hero.name" :hero-attribute="hero.attribute"/>
+        <HeroCard 
+          v-for="(hero, index) in heroes" 
+          v-bind:key="index" 
+          :hero-name="hero.name" 
+          :hero-attribute="hero.attribute"
+          :hero-code-name="hero.codeName"
+        />
       </div>
     </div>
     <div class="heroes__footer">
@@ -17,49 +23,58 @@
 
 <script>
 import './reset.css';
+
+const ATTRIBUTE_NAMES = {
+  ['str']: 'strength',
+  ['agi']: 'agility',
+  ['int']: 'intelligence',
+}
+
+const HERO_CODE_NAMES = {
+  ['windranger']: 'windrunner',
+  ['magnus']: 'magnataur',
+  ['shadow fiend']: 'nevermore',
+  ['vengeful spirit']: 'vengefulspirit',
+  ['zeus']: 'zuus',
+  ['necrophos']: 'necrolyte',
+  ['queen of pain']: 'queenofpain',
+  ['wraith king']: 'skeleton king',
+  ['clockwerk']: 'rattletrap',
+  ['natures prophet']: 'furion',
+  ['lifestealer']: 'life stealer',
+  ['outworld destroyer']: 'obsidian destroyer',
+  ['centaur warrunner']: 'centaur',
+  ['timbersaw']: 'shredder',
+  ['treant protector']: 'treant',
+  ['io']: 'wisp',
+  ['doom']: 'doom bringer',
+}
+
 export default {
   name: 'App',
   data: function() {
     return {
-      heroes: [
-        {name: 'weaver', attribute: 'agility'},
-        {name: 'clinkz', attribute: 'strength'},
-        {name: 'antimage', attribute: 'strength'},
-        {name: 'sniper', attribute: 'strength'},
-        {name: 'snapfire', attribute: 'strength'},
-        {name: 'undying', attribute: 'strength'},
-        {name: 'warlock', attribute: 'intelligence'},
-        {name: 'enchantress', attribute: 'intelligence'},
-        {name: 'wisp', attribute: 'strength'},
-        {name: 'tiny', attribute: 'strength'},
-        {name: 'invoker', attribute: 'strength'},
-        {name: 'juggernaut', attribute: 'strength'},
-        {name: 'weaver', attribute: 'strength'},
-        {name: 'clinkz', attribute: 'strength'},
-        {name: 'antimage', attribute: 'strength'},
-        {name: 'sniper', attribute: 'strength'},
-        {name: 'snapfire', attribute: 'strength'},
-        {name: 'undying', attribute: 'strength'},
-        {name: 'warlock', attribute: 'strength'},
-        {name: 'enchantress', attribute: 'strength'},
-        {name: 'wisp', attribute: 'strength'},
-        {name: 'tiny', attribute: 'strength'},
-        {name: 'invoker', attribute: 'strength'},
-        {name: 'juggernaut', attribute: 'strength'},
-        {name: 'weaver', attribute: 'strength'},
-        {name: 'clinkz', attribute: 'strength'},
-        {name: 'antimage', attribute: 'strength'},
-        {name: 'sniper', attribute: 'strength'},
-        {name: 'snapfire', attribute: 'strength'},
-        {name: 'undying', attribute: 'strength'},
-        {name: 'warlock', attribute: 'strength'},
-        {name: 'enchantress', attribute: 'strength'},
-        {name: 'wisp', attribute: 'strength'},
-        {name: 'tiny', attribute: 'strength'},
-        {name: 'invoker', attribute: 'strength'},
-        {name: 'juggernaut', attribute: 'strength'},
-      ],
+      heroes: [],
     }
+  },
+  mounted: function() {
+    fetch('https://615faa05f7254d00170681c4.mockapi.io/api/heroes')
+    .then((response) => {
+      response.json()
+      .then((data) => {
+        this.heroes = data.map((hero) => {
+          const name = hero.localized_name.toLowerCase().replace('-', '').replace("'", '');
+          return {
+            name,
+            attribute: ATTRIBUTE_NAMES[hero.primary_attr],
+            codeName:  (HERO_CODE_NAMES[name]) ? HERO_CODE_NAMES[name] : name,
+          }
+        });
+      });
+    })
+    .catch(() => {
+
+    });
   }
 }
 </script>

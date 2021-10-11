@@ -9,8 +9,9 @@
         <div class="hero-card__shadow" />
     </a>
 </template>
-<script>
-    export default {
+<script lang="ts">
+    import { defineComponent } from 'vue';
+    export default defineComponent({
         props: {
             heroName: String,
             heroAttribute: String,
@@ -20,11 +21,11 @@
             return {
                 attributeImageSrc: `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/icons/hero_${this.heroAttribute}.png`,
                 styleObject: {
-                    backgroundImage: `url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${this.heroCodeName.replaceAll(' ', '_')}.png")`,
+                    backgroundImage: `url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${this.heroCodeName!.replaceAll(' ', '_')}.png")`,
                 },
             }
         }
-    }
+    });
 </script>
 <style>
     .hero-card {

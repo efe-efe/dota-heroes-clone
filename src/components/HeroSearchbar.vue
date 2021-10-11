@@ -1,6 +1,7 @@
 <template>
     <div class="hero-searchbar">
         <div>Filtrar héroes</div>
+        <input />
     </div>
 </template>
 <script lang="ts">

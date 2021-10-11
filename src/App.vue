@@ -83,6 +83,9 @@ p {
 
 .heroes__body {
   padding: 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .heroes__footer {
@@ -96,6 +99,7 @@ p {
 
 .hero-grid {
   display: grid;
+  width: 100%;
   max-width: 1200px;
   gap: 18.75px;
   margin-top: 15px;

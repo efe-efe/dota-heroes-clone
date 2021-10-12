@@ -24,6 +24,13 @@
                     backgroundImage: `url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${this.heroCodeName!.replaceAll(' ', '_')}.png")`,
                 },
             }
+        },
+        watch: {
+            heroCodeName: function(newValue) {
+                this.styleObject = {
+                    backgroundImage: `url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${newValue!.replaceAll(' ', '_')}.png")`,
+                };
+            }
         }
     });
 </script>

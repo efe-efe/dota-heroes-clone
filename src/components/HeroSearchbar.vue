@@ -1,15 +1,17 @@
 <template>
     <div class="hero-searchbar">
         <div>Filtrar héroes</div>
-        <input />
+        <input @input="handleInput"/>
     </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
 export default defineComponent({
-    props: {
-
-    },
+    methods: {
+        handleInput: function(event: any) {
+            this.$emit('on-input-change', event);
+        }
+    }
 });
 </script>
 <style scoped>

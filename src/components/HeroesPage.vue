@@ -5,10 +5,12 @@
     <div class="heroes__body">
       <h1>ELIGE A TU HÉROE</h1>
       <p>Estrategas de la magia, feroces bestias y villanos astutos... El conjunto de héroes de Dota 2 es enorme y de una diversidad ilimitada. Lanza increíbles hechizos y devastadoras habilidades definitivas en tu camino hacia la victoria.</p>
-      <hero-searchbar />
+      <hero-searchbar 
+        @on-input-change="filterHeroes"
+      />
       <div class="hero-grid">
         <hero-card 
-          v-for="(hero, index) in heroes" 
+          v-for="(hero, index) in filteredHeroes" 
           v-bind:key="index" 
           :hero-name="hero.name" 
           :hero-attribute="hero.attribute"
@@ -31,6 +33,12 @@ const ATTRIBUTE_NAMES = {
     ['int']: 'intelligence',
 }
 
+interface Hero {
+  name: string,
+  localized_name: string,
+  primary_attr: 'agi' | 'str' | 'int',
+}
+
 export default defineComponent({
     components: {
         'hero-card': HeroCard,
@@ -38,39 +46,38 @@ export default defineComponent({
     },
     data: function() {
         return {
-        heroes: [],
+            heroes: [],
+            filteredHeroes: [],
+            searchQuery: '',
         }
     },
-    mounted: function() {
-        fetch('https://615faa05f7254d00170681c4.mockapi.io/api/heroes')
-        .then((response) => {
-            response.json()
-            .then((data) => {
-                this.heroes = data.map((hero: {
-                    name: string,
-                    localized_name: string,
-                    primary_attr: 'agi' | 'str' | 'int',
-                }) => {
-                return {
-                    name: hero.localized_name,
-                    attribute: ATTRIBUTE_NAMES[hero.primary_attr],
-                    codeName:  hero.name.split('npc_dota_hero_')[1],
-                }
-                });
-            });
-        })
-        .catch(() => {
+    mounted: async function() {
+        const response = await fetch('https://615faa05f7254d00170681c4.mockapi.io/api/heroes');
 
-        });
+        if (response.status === 200) {
+            const data = await response.json();
+
+            this.heroes = data.map((hero: Hero) => {
+              return {
+                  name: hero.localized_name,
+                  attribute: ATTRIBUTE_NAMES[hero.primary_attr],
+                  codeName:  hero.name.split('npc_dota_hero_')[1],
+              }
+            });
+            this.filteredHeroes = this.heroes;
+        }
+    },
+    methods: {
+        filterHeroes: function(event: any) {
+          this.filteredHeroes = this.heroes.filter((hero: Hero) => {
+            return hero.name.toLowerCase().includes(event.target.value);
+          });
+        }
     }
 });
 </script>
 <style>
 .heroes {
-}
-
-img {
-  box-sizing: border-box;
 }
 
 h1 {

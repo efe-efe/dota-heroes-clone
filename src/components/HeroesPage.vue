@@ -64,7 +64,15 @@ export default defineComponent({
                   codeName:  hero.name.split('npc_dota_hero_')[1],
               }
             });
-            this.filteredHeroes = this.heroes;
+            this.filteredHeroes = this.heroes.sort(function (hero: Hero, nextHero: Hero) {
+              if (hero.name > nextHero.name) {
+                return 1;
+              }
+              if (hero.name < nextHero.name) {
+                return -1;
+              }
+              return 0;
+            });
         }
     },
     methods: {

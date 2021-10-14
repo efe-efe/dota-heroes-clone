@@ -1,12 +1,19 @@
 <template>
     <div class="hero-searchbar">
-        <div>Filtrar héroes</div>
+        <div class="hero-searchbar__title">Filtrar héroes</div>
+        <specific-filter />
+        <div>Complejidad</div>
         <input @input="handleInput"/>
     </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
+import SpecificFilter from './SpecificFilter.vue';
+
 export default defineComponent({
+    components: {
+        'specific-filter': SpecificFilter,
+    },
     methods: {
         handleInput: function(event: any) {
             this.$emit('on-input-change', event);
@@ -16,6 +23,7 @@ export default defineComponent({
 </script>
 <style scoped>
     .hero-searchbar {
+        display: flex;
         width: 100%;
         max-width: 1200px;
         padding: 10px;
@@ -23,6 +31,14 @@ export default defineComponent({
         display: flex;
         align-items: center;
         border: 1px solid black;
+        justify-content: space-between;
         height: 50px; /* delete dis after */
+    }
+
+    
+    @media (max-width: 1200px) {
+        .hero-searchbar__title {
+            display: none;
+        }
     }
 </style>

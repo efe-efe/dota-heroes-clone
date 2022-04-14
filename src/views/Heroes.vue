@@ -23,8 +23,8 @@
   </div>
 </template>
 <script lang="ts">
-import HeroCard from './HeroCard.vue';
-import HeroSearchbar from './HeroSearchbar.vue';
+import HeroCard from '@/components/HeroCard.vue';
+import HeroSearchbar from '@/components/HeroSearchbar.vue';
 import { defineComponent } from 'vue';
 
 const ATTRIBUTE_NAMES = {

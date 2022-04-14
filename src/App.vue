@@ -1,19 +1,25 @@
 <template>
-  <heroes-page />
+  <component :is="currentView" />
 </template>
-
 <script>
-import './reset.css';
-import HeroesPage from './components/HeroesPage.vue';
+import routes from "./router/routes.ts";
+
 export default {
-  components: {
-    'heroes-page': HeroesPage,
+  name: "App",
+  data() {
+    return {
+      currentPath: window.location.hash,
+    };
   },
-  name: 'App',
-}
+  computed: {
+    currentView() {
+      return routes[this.currentPath.slice(1) || "/"] || <div>NOT FOUND</div>;
+    },
+  },
+  mounted() {
+    window.addEventListener("hashchange", () => {
+      this.currentPath = window.location.hash;
+    });
+  },
+};
 </script>
-<style>
-* {
-  box-sizing: border-box;
-}
-</style>

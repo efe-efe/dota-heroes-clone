@@ -8,7 +8,7 @@ export default {
   name: "App",
   data() {
     return {
-      currentPath: window.location.hash,
+      currentPath: window.location.pathname,
     };
   },
   computed: {
@@ -18,7 +18,7 @@ export default {
   },
   mounted() {
     window.addEventListener("hashchange", () => {
-      this.currentPath = window.location.hash;
+      this.currentPath = window.location.pathname;
     });
   },
 };

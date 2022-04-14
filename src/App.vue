@@ -3,6 +3,7 @@
 </template>
 <script>
 import routes from "./router/routes.ts";
+import './reset.css';
 
 export default {
   name: "App",

@@ -42,6 +42,7 @@
         transition-duration: .3s;
         transition-timing-function: ease-out;
         box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em, rgba(2, 8, 20, 0.08) 0px 0.175em 0.5em;
+        overflow: hidden;
         
         align-self: normal;
         position: relative;

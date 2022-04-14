@@ -1,7 +1,7 @@
 <template>
     <div class="hero-searchbar">
         <div class="hero-searchbar__title">Filtrar héroes</div>
-        <specific-filter />
+        <SpecificFilter />
         <div>Complejidad</div>
         <input @input="handleInput"/>
     </div>
@@ -12,7 +12,7 @@ import SpecificFilter from './SpecificFilter.vue';
 
 export default defineComponent({
     components: {
-        'specific-filter': SpecificFilter,
+        SpecificFilter,
     },
     methods: {
         handleInput: function(event: any) {

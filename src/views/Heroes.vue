@@ -1,15 +1,14 @@
 <template>
   <div class="heroes">
-    <div class="navbar">
-    </div>
+    <nav />
     <div class="heroes__body">
       <h1>ELIGE A TU HÉROE</h1>
       <p>Estrategas de la magia, feroces bestias y villanos astutos... El conjunto de héroes de Dota 2 es enorme y de una diversidad ilimitada. Lanza increíbles hechizos y devastadoras habilidades definitivas en tu camino hacia la victoria.</p>
-      <hero-searchbar 
+      <HeroSearchbar 
         @on-input-change="filterHeroes"
       />
       <div class="hero-grid">
-        <hero-card 
+        <HeroCard 
           v-for="(hero, index) in filteredHeroes" 
           v-bind:key="index" 
           :hero-name="hero.name" 
@@ -18,8 +17,7 @@
         />
       </div>
     </div>
-    <div class="heroes__footer">
-    </div>
+    <footer />
   </div>
 </template>
 <script lang="ts">
@@ -41,8 +39,8 @@ interface Hero {
 
 export default defineComponent({
     components: {
-        'hero-card': HeroCard,
-        'hero-searchbar': HeroSearchbar,
+        HeroCard,
+        HeroSearchbar,
     },
     data: function() {
         return {
@@ -109,11 +107,11 @@ p {
   align-items: center;
 }
 
-.heroes__footer {
+footer {
   padding: 30px 100px;
 }
 
-.navbar {
+nav {
   height: 80px;
   border: 1px solid red;
 }
